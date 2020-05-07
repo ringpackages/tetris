@@ -353,22 +353,23 @@ func NewShape oGame
 func AddNewShape oGame
 
 	# Support different shapes 
-		nShape = Random(6)+1 
+		nShape = Random(6)+1   
+		# The second cell is used as a center for the Rotation 
 		switch nShape
-		on 1  # |
-			aBlock = [ [1,1] , [2,1] , [3,1] , [4,1] ]
-		on 2  # _ 
-			aBlock = [ [1,1] , [1,2] , [1,3] , [1,4] ]
-		on 3  # []
+		on 1  # O 
 			aBlock = [ [1,1] , [2,1] , [1,2] , [2,2] ]
-		on 4  # L
-			aBlock = [ [1,1] , [2,1] , [3,1] , [3,2] ]
-		on 5  # _|
-			aBlock = [ [2,1] , [2,2] , [2,3] , [1,2] ]
-		on 6  # _-
+		on 2  # I  
+			aBlock = [ [2,1] , [4,1] , [3,1] , [1,1] ]
+		on 3  # S
 			aBlock = [ [3,1] , [3,2] , [2,2] , [2,3] ]
-		on 7  # -_
+		on 4  # Z
 			aBlock = [ [1,1] , [1,2] , [2,2] , [2,3] ]
+		on 5  # L
+			aBlock = [ [1,1] , [2,1] , [3,1] , [3,2] ]
+		on 6  # J
+			aBlock = [ [1,2] , [2,2] , [3,2] , [3,1] ]
+		on 7  # T
+			aBlock = [ [2,1] , [2,2] , [2,3] , [3,2] ]
 		off
 
 	# Start the Shape outside the screen 
@@ -466,8 +467,8 @@ func RotateShape oGame,oMap,aLevelCopy,aBlockCopy
 		ok
 		nRotateClock = clock()
 	
-	# Avoid [] Shape
-		if nShape = 3 return ok
+	# Avoid O Shape
+		if nShape = 1 return ok
 
 	# Apply the rotation 
 		for t = 1 to len(aBlock) 
